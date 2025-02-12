@@ -1,0 +1,31 @@
+import random
+
+def obtener_eleccion(mensaje):
+    while True:
+        try:
+            eleccion = int(input(mensaje))
+            if eleccion in [1, 2, 3]:
+                return eleccion
+            else:
+                print("Opción inválida. Ingresa 1, 2 o 3.")
+        except ValueError:
+            print("Entrada no válida. Ingresa un número del 1 al 3.")
+
+def jugar():
+    opciones = {1: "Piedra", 2: "Papel", 3: "Tijeras"}
+    usuario = obtener_eleccion("Elige una opción (1: Piedra, 2: Papel, 3: Tijeras): ")
+    maquina = random.randint(1, 3)
+    
+    print(f"Tú elegiste: {opciones[usuario]}")
+    print(f"La máquina eligió: {opciones[maquina]}")
+    
+    if usuario == maquina:
+        print("Es un empate!")
+    elif (usuario == 1 and maquina == 3) or (usuario == 2 and maquina == 1) or (usuario == 3 and maquina == 2):
+        print("¡Ganaste!")
+    else:
+        print("Perdiste.")
+
+if __name__ == "__main__":
+    jugar()
+
